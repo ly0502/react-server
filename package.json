@@ -1,42 +1,48 @@
 {
-  "name": "demo-react-server",
+  "name": "example",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "egg": {
-    "declarations": true
+    "declarations": true,
+    "typescript": true
   },
   "dependencies": {
-    "egg": "^2.15.1",
-    "egg-mysql": "^3.1.0",
-    "egg-scripts": "^2.11.0"
+    "axios": "^1.7.2",
+    "crypto": "^1.0.1",
+    "dayjs": "^1.11.10",
+    "egg": "^3.17.5",
+    "egg-alinode": "^2.0.1",
+    "egg-cors": "^3.0.0",
+    "egg-multipart": "^3.3.0",
+    "egg-mysql": "^4.0.0",
+    "egg-redis": "^2.5.0",
+    "egg-scripts": "2",
+    "egg-socket.io": "^4.0.7",
+    "egg-view-nunjucks": "^2.3.0",
+    "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
-    "autod-egg": "^1.1.0",
-    "egg-bin": "^4.11.0",
-    "egg-ci": "^1.11.0",
-    "egg-mock": "^3.21.0",
-    "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0"
+    "egg-bin": "6",
+    "egg-mock": "5",
+    "eslint": "8",
+    "eslint-config-egg": "13"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-",
-    "stop": "egg-scripts stop --title=egg-server-",
-    "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
+    "start": "egg-scripts start --env=prod --workers=2 --daemon --title=egg-server-example",
+    "stop": "egg-scripts stop --title=egg-server-example",
+    "restart": "npm run stop && npm run start",
+    "dev": "egg-bin dev --sticky",
+    "test": "npm run lint -- --fix && npm run test:local",
+    "test:local": "egg-bin test",
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
-  },
-  "ci": {
-    "version": "10"
+    "publish": "chmod +x sftp_prd && ./sftp_prd"
   },
   "repository": {
     "type": "git",

@@ -1,16 +1,34 @@
 /*
- * @Author: wb_luyin wb_luyin@zhongan.com
- * @Date: 2022-05-24 16:33:00
- * @LastEditors: wb_luyin wb_luyin@zhongan.com
- * @LastEditTime: 2022-05-24 17:29:54
- * @FilePath: /demo-react-server/config/plugin.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Author: 马妍
+ * @Date: 2024-01-21 16:45:17
+ * @LastEditors: luyin nwwb-luyin@nuanwa.net
+ * @LastEditTime: 2024-06-13 17:14:04
+ * @Description:
  */
-'use strict';
-// 开启插件列表
+/** @type Egg.EggPlugin */
 module.exports = {
-  mysql:{
-    enable:true,
-    package:'egg-mysql'
-  }
+  mysql: {
+    enable: true,
+    package: "egg-mysql",
+  },
+  redis: {
+    enable: true,
+    package: "egg-redis",
+  },
+  nunjucks: {
+    enable: true,
+    package: "egg-view-nunjucks",
+  },
+  cors: {
+    enable: true,
+    package: "egg-cors",
+  },
+  io: {
+    enable: true,
+    package: "egg-socket.io",
+  },
+  multipart: {
+    enable: true,
+    package: "egg-multipart",
+  },
 };

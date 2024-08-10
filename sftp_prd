@@ -1,0 +1,29 @@
+#!/usr/bin/expect
+
+set PATH /home/Web/socket/egg-example
+set timeout 180
+
+spawn sftp uploaduser@118.178.137.143
+expect "password:"
+send "2002502Upload\n"
+expect "sftp>"
+
+# 进入指定目录
+send "cd $PATH\n"
+expect "sftp>"
+
+# 获取本地目录下的文件和目录列表
+set local_files [glob -nocomplain -directory . *]
+
+# 遍历列表
+foreach file $local_files {
+    # 排除 node_modules 目录
+    if {$file != "./node_modules"} {
+        # 上传文件或目录
+        send "put -r \"$file\"\n"
+        expect "sftp>"
+    }
+}
+
+# 上传完毕后退出
+send "exit\n"
